@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "463095430086",
+    "project_id": "silent-step",
+    "storage_bucket": "silent-step.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463095430086:android:a1d045391cb423134790c7",
+        "android_client_info": {
+          "package_name": "com.nnyftr.silentstep"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa8gmglRoBkuznPvFuxP-7eKXhVpti0ZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

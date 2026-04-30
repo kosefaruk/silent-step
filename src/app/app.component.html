@@ -1,0 +1,38 @@
+<ng-container [ngSwitch]="status">
+  <div *ngSwitchCase="'loading'" class="gate-screen">
+    <div class="gate-card">
+      <div class="gate-spinner"></div>
+      <div class="gate-title">Yükleniyor...</div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'disabled'" class="gate-screen">
+    <div class="gate-card">
+      <div class="gate-icon" aria-hidden="true">
+        <span nz-icon nzType="tool" nzTheme="outline"></span>
+      </div>
+      <div class="gate-title">Uygulama Şu Anda Kullanılamıyor</div>
+      <div class="gate-desc">
+        {{ appSettings.settings?.disabledMessage || 'Sistem bakım modunda. Lütfen daha sonra tekrar deneyin.' }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'updateRequired'" class="gate-screen">
+    <div class="gate-card">
+      <div class="gate-icon" aria-hidden="true">
+        <span nz-icon nzType="cloud-download" nzTheme="outline"></span>
+      </div>
+      <div class="gate-title">Güncelleme Gerekli</div>
+      <div class="gate-desc">
+        {{ appSettings.settings?.updateMessage || 'Devam etmek için uygulamanızı en son sürüme güncelleyin.' }}
+      </div>
+      <button nz-button nzType="primary" nzSize="large" class="gate-btn" (click)="openStore()">
+        Mağazaya Git
+      </button>
+    </div>
+  </div>
+
+  <router-outlet *ngSwitchCase="'ok'" />
+</ng-container>
+<ngx-spinner *ngIf="status === 'ok'"></ngx-spinner>

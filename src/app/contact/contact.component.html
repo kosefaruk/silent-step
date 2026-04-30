@@ -1,0 +1,35 @@
+<div class="contact-page">
+    <div class="section-head">
+        <div class="section-title">
+            <span class="section-icon">📞</span>
+            <div>
+                <div class="h1">Bize Ulaşın</div>
+                <div class="h2">Destek</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+    </div>
+
+    <button class="support-card" type="button" (click)="openEmail()">
+        <div class="left">
+            <div class="badge">
+                <span class="badge-icon">✉️</span>
+            </div>
+
+            <div class="text">
+                <div class="kicker">E-posta</div>
+                <div class="value">{{ email }}</div>
+                <div class="sub">Dokunarak mail uygulamasını aç</div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="arrow">›</div>
+        </div>
+    </button>
+
+    <div class="hint">
+        <b>İpucu:</b> Sorun bildirirken mümkünse ekran görüntüsü ekleyin.
+    </div>
+</div>

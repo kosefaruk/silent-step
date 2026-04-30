@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">iDEA</string>
+    <string name="title_activity_main">iDEA</string>
+    <string name="package_name">com.nnyftr.silentstep</string>
+    <string name="custom_url_scheme">com.nnyftr.silentstep</string>
+</resources>

@@ -1,0 +1,409 @@
+/* Sayfa */
+.screen {
+  min-height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #f6f8fb, #eef3f7);
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar{
+  width: 100%;
+  padding: 14px 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+
+  /* ✅ yeni tema (turkuaz-mavi) */
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+
+
+.stream-back-btn{
+  background: rgba(255,255,255,0.95) !important;
+  border: none !important;
+  color: #111 !important;
+  margin-right: 10px;
+}
+
+.pill{
+  background: rgba(255,255,255,0.92);
+  color: #111;
+  font-weight: 900;
+  padding: 10px 14px;
+  border-radius: 999px;
+  min-width: 110px;
+  text-align: center;
+}
+
+.topbar-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.chip{
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.30);
+  color: #fff;
+  font-weight: 900;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.progress{
+  width: 160px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.22);
+  overflow: hidden;
+}
+
+.progress-fill{
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+}
+
+
+.title {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+
+/* İçerik alanı */
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 16px 12px 18px;
+}
+
+/* Ortadaki ana kutu */
+.media-shell {
+  width: 100%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Video kartı */
+.video-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+  padding: 12px;
+}
+
+/* video alanı */
+.video-fit {
+  width: 100%;
+  height: clamp(210px, 56.25vw, 48vh); /* biraz büyüttüm -> alttaki boşluk azalır */
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-fit .video-js {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+::ng-deep .video-fit .vjs-tech {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+/* Video altındaki meta satırı */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px 2px;
+  color: rgba(0,0,0,0.55);
+  font-size: 12px;
+  font-weight: 700;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #1b9aa5;
+}
+
+/* Playlist kartı */
+.playlist-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+  padding: 12px;
+}
+
+.playlist-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2px 4px 10px;
+  font-weight: 900;
+  color: #111;
+}
+.playlist-head .sub {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.45);
+}
+
+/* Playlist yatay scroll */
+.playlist-container { width: 100%; }
+
+.playlist-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  padding: 0 2px;
+  margin: 0;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.playlist-thumb {
+  flex: 0 0 auto;
+  width: 120px;
+  user-select: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.playlist-thumb img {
+  width: 120px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+}
+
+.playlist-thumb span {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* seçili thumb */
+.playlist-thumb.active img {
+  outline: 4px solid rgba(245, 158, 11, 0.98); /* amber/gold */
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.22);
+}
+.playlist-thumb.active img { transform: scale(1.02); }
+
+
+/* Tıklama kapalı kalsın */
+.playlist-disabled .playlist-thumb {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Alt bilgi alanı: boşluğu “bilinçli” doldurur */
+.bottom-hint {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(0,0,0,0.45);
+  padding: 4px 8px 0;
+}
+
+
+
+
+/* ============================
+   MODAL GENEL GÖRÜNÜM
+============================ */
+::ng-deep .custom-modal .ant-modal-content {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18);
+}
+
+::ng-deep .custom-modal .ant-modal-header {
+  border-bottom: 0;
+  padding: 16px 18px 0;
+}
+
+::ng-deep .custom-modal .ant-modal-title {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+::ng-deep .custom-modal .ant-modal-body {
+  padding: 14px 18px 18px;
+}
+
+/* ============================
+   İÇ KART
+============================ */
+.modal-card {
+  text-align: center;
+}
+
+.modal-badge {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 184, 166, 0.15);
+  font-size: 22px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 6px 0 6px;
+  color: #111;
+}
+
+.modal-sub {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 14px;
+}
+
+/* ============================
+   RADIO GROUP
+============================ */
+.difficulty-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 8px 0 14px;
+}
+
+/* ============================
+   RADIO OPTION (HİZALAMA FIX)
+   - Radio solda sabit
+   - Metin ortada
+   - Sol renk şeridi layout'u bozmaz
+============================ */
+.difficulty-option {
+  --strip: rgba(0, 0, 0, 0.12);
+
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+
+  /* ✅ sabit sol boşluk: hepsi aynı hizadan başlar */
+  padding: 12px 14px 12px 22px;
+
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+
+  /* ✅ Grid: 1.kolon radio, 2.kolon metin */
+  display: grid !important;
+  grid-template-columns: 24px 1fr; /* radio alanı sabit */
+  column-gap: 12px;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+/* Sol renk şeridi (border-left yerine) */
+.difficulty-option::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 6px;
+  border-radius: 999px;
+  background: var(--strip);
+}
+
+.difficulty-option:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.10);
+  border-color: rgba(20, 184, 166, 0.45);
+}
+
+/* Radio ikonunu sabitle */
+::ng-deep .difficulty-option .ant-radio {
+  margin: 0;               /* eski marginleri sıfırla */
+  justify-self: start;     /* solda kalsın */
+}
+
+/* ✅ Metin span’ı: sola hizalı, sabit başlangıç */
+::ng-deep .difficulty-option > span:last-child {
+  display: block;
+  text-align: left;        /* kayma hissini bitiren ana nokta */
+  white-space: nowrap;
+}
+
+/* Seçili durum */
+::ng-deep .difficulty-group .ant-radio-wrapper-checked.difficulty-option {
+  background: linear-gradient(90deg, rgba(20, 184, 166, 0.14), rgba(14, 165, 233, 0.10));
+  border-color: rgba(20, 184, 166, 0.65);
+}
+
+/* Radio iç yuvarlağı küçük kalsın */
+::ng-deep .difficulty-group .ant-radio-inner {
+  transform: scale(0.95);
+}
+
+/* Renk şeritleri */
+.easy1  { --strip: #22c55e; }
+.easy2  { --strip: #eab308; }
+.normal { --strip: #3b82f6; }
+.hard1  { --strip: #f97316; }
+.hard2  { --strip: #ef4444; }
+
+/* ============================
+   BUTONLAR
+============================ */
+.confirm-button {
+  width: 100%;
+  max-width: 320px;
+  height: 44px;
+  border-radius: 14px;
+  font-weight: 900;
+  margin: 6px auto 8px;
+  display: block;
+}
+
+.ghost-button {
+  width: 100%;
+  max-width: 320px;
+  height: 44px;
+  border-radius: 14px;
+  font-weight: 800;
+  margin: 0 auto;
+  display: block;
+}
+
+.finish-actions{
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}

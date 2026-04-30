@@ -1,0 +1,13 @@
+<div nz-flex [nzJustify]="'center'" [nzAlign]="'center'" style="height: 100%; width: 100%;" *ngIf="loading">
+  <span class="loader"></span>
+</div>
+
+<nz-calendar [(nzValue)]="currentDate">
+  <ul *nzDateCell="let date" class="events">
+    <ng-container *ngIf="listDataMap[date.getFullYear()]?.[date.getMonth() + 1]?.[date.getDate()]">
+      <li *ngFor="let item of listDataMap[date.getFullYear()][date.getMonth() + 1][date.getDate()]">
+        <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+      </li>
+    </ng-container>
+  </ul>
+</nz-calendar>

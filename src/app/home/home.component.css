@@ -1,0 +1,178 @@
+::ng-deep .ant-page-header-heading {
+  width: 100%;
+}
+::ng-deep .ant-page-header-heading-left {
+  width: 100%;
+}
+
+/* FULL HEIGHT */
+.full-height {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ekranın tamamını kapla */
+  width: 100%;
+}
+
+/* HEADER */
+.custom-header {
+  background: var(--header-bg-color, #B0BEC5); /* Varsayılan mavi, renk dinamik olarak değiştirilebilir */
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  width: 100%;
+  height: 80px; /* Header yüksekliği sabit */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif shadow */
+  transition: all 0.3s ease-in-out;
+}
+
+/* HEADER BAŞLIK */
+.custom-header-title {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 15px;
+}
+
+/* İÇERİK ALANI */
+.content-container {
+  flex-grow: 1; /* Header’dan kalan alanı kaplar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* İÇERİK */
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.custom-header-title {
+  display: flex;
+  align-items: center; /* Dikey ortalama */
+  justify-content: space-between; /* Butonu sağa yasla */
+  width: 100%;
+  position: relative;
+}
+
+/* Buton konteyneri */
+.header-button-container {
+  display: flex;
+  align-items: center; /* Dikey ortalama */
+  justify-content: center; /* Yatay ortalama */
+  margin-left: auto; /* Sol tarafta boşluk bırakıp sağa yaslamak için */
+}
+
+/* iOS safe area: üstte çentik/saat alanına göre boşluk bırak */
+
+
+.custom-header{
+  /* önce eski iOS */
+  padding-top: calc(constant(safe-area-inset-top) + 10px);
+  /* sonra yeni iOS */
+  padding-top: calc(env(safe-area-inset-top) + 10px);
+
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+
+/* NgZorro PageHeader layout fix */
+::ng-deep .custom-header .ant-page-header-heading{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;     /* ✅ wrap olmasın, menü aşağı düşmesin */
+  gap: 12px;
+}
+
+/* Sol taraf (avatar + title) alanı daralabilsin */
+::ng-deep .custom-header .ant-page-header-heading-left{
+  flex: 1;
+  min-width: 0;          /* ✅ ellipsis çalışması için şart */
+}
+
+/* Sağ taraf (extra) her zaman sağda kalsın */
+::ng-deep .custom-header .ant-page-header-heading-extra{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Brand iki satır */
+.brand{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brand-title{
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.brand-subtitle{
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.1;
+  color: rgba(255,255,255,0.88);
+
+  /* ✅ uzun metin taşmasın */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Menü butonu */
+.menu-btn{
+  background: #fff !important;
+  color: rgb(72,146,137) !important;
+  border: none;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+
+
+
+/* bazen iOS eski sürümler için */
+@supports (padding-top: constant(safe-area-inset-top)) {
+  .custom-header {
+    padding-top: calc(constant(safe-area-inset-top) + 8px) !important;
+  }
+}
+
+/* içerik de header altında kalsın */
+.content-container {
+  padding-top: 8px;
+}
+
+.brand { line-height: 1.1; }
+.brand-title { font-weight: 900; font-size: 20px; }
+.brand-subtitle { font-size: 12px; font-weight: 700; opacity: 0.75; margin-top: 2px; }

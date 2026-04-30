@@ -1,0 +1,54 @@
+<nz-spin [nzSpinning]="loading" nzSize="large" nzTip="Yükleniyor...">
+    <ng-container *ngIf="(sessions$ | async) as sessions">
+        <nz-empty *ngIf="!sessions?.length" nzNotFoundContent="Henüz seans yok"></nz-empty>
+
+        <nz-collapse *ngIf="sessions?.length" [nzBordered]="false">
+            <nz-collapse-panel
+                    *ngFor="let session of sessions"
+                    [nzHeader]="headerTpl">
+                <!-- HEADER TEMPLATE -->
+                <ng-template #headerTpl>
+                    <div class="panel-header">
+                        <span class="header-date">{{ getFormattedDate(session.createDate) }}</span>
+
+                        <nz-tag class="header-tag" [nzColor]="session.isCompleted ? 'green' : 'red'">
+                            {{ session.isCompleted ? 'Tamamlandı' : 'Tamamlanmadı' }}
+                        </nz-tag>
+                    </div>
+                </ng-template>
+
+                <!-- Üst bilgi alanı (tamamlandı tag’i buradan kaldırıldı) -->
+                <div class="panel-top">
+                    <div class="panel-left">
+                        <nz-tag nzColor="blue" class="tag">
+                            Seçili Zorluk: {{ getDifficultyText(session.difficulty ?? '') }}
+                        </nz-tag>
+
+                        <nz-tag nzColor="geekblue" class="tag">
+                            Seans Sonu: {{ getDifficultyText(session.selectedEndDifficulty ?? '') }}
+                        </nz-tag>
+                    </div>
+
+                    <div class="panel-right">
+                        <span class="count">{{ session.videos?.length || 0 }} video</span>
+                    </div>
+                </div>
+
+                <!-- Video listesi -->
+                <ul class="video-list">
+                    <li class="video-row" *ngFor="let video of session.videos; let idx = index">
+                        <div class="left">
+                            <nz-badge [nzStatus]="session.isCompleted ? 'success' : 'processing'"></nz-badge>
+                        </div>
+
+                        <div class="right">
+                            <div class="video-name">{{ idx + 1 }}. {{ video.videoName }}</div>
+                            <div class="video-detail">{{ video.categoryDetail || '-' }}</div>
+                        </div>
+                    </li>
+                </ul>
+
+            </nz-collapse-panel>
+        </nz-collapse>
+    </ng-container>
+</nz-spin>

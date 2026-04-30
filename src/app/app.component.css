@@ -1,0 +1,65 @@
+.gate-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #f6f8fb, #eef3f7);
+  padding: 24px;
+  z-index: 9999;
+}
+
+.gate-card {
+  width: min(420px, 100%);
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 24px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.gate-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  color: #fff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gate-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111;
+}
+
+.gate-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.gate-btn {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.gate-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: gate-spin 0.9s linear infinite;
+}
+
+@keyframes gate-spin {
+  to { transform: rotate(360deg); }
+}

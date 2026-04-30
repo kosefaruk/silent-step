@@ -1,0 +1,57 @@
+<div class="full-height">
+    <nz-page-header nzBackIcon class="custom-header w-100">
+
+        <!-- Logo -->
+        <nz-avatar
+                nz-page-header-avatar
+                [nzSize]="52"
+                nzSrc="silent-step-icon.png"
+                routerLink="">
+        </nz-avatar>
+
+        <!-- Başlık + alt satır -->
+        <nz-page-header-title>
+            <div class="brand">
+                <div class="brand-title">iDEA</div>
+                <div class="brand-subtitle">İşaret Dili ile Egzersiz ve Aktivite</div>
+            </div>
+        </nz-page-header-title>
+
+        <!-- Sağ menü -->
+        <nz-page-header-extra>
+            <button
+                    nz-button
+                    nzShape="circle"
+                    nz-dropdown
+                    nzTrigger="click"
+                    [nzDropdownMenu]="menu"
+                    class="menu-btn">
+                <span nz-icon nzType="menu"></span>
+            </button>
+
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu nzSelectable>
+                    <li nz-menu-item routerLink="/calendar">
+                        <span nz-icon nzType="calendar"></span> Takvim
+                    </li>
+                    <li nz-menu-item routerLink="/history">
+                        <span nz-icon nzType="history"></span> Geçmiş
+                    </li>
+                    <li nz-menu-item routerLink="/contact">
+                        <span nz-icon nzType="phone"></span> Bize Ulaşın
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
+        </nz-page-header-extra>
+
+    </nz-page-header>
+
+
+
+    <!-- İçerik Alanı -->
+    <nz-page-header-content class="content-container">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </nz-page-header-content>
+</div>

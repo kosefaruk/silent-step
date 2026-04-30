@@ -1,0 +1,174 @@
+<!-- FULL PAGE SPIN -->
+<div class="screen">
+    <nz-spin [nzSpinning]="loading" nzSize="large" nzTip="Yükleniyor...">
+        <app-stream *ngIf="load && sessionStatus === 'session'"
+                    (back)="goBackFromStream()"
+                    (completed)="onExerciseCompleted()"></app-stream>
+
+        <!-- RESUME ACTIVE SESSION -->
+        <div class="wrap" *ngIf="hasActiveSession && sessionStatus === 'equipment'">
+            <nz-card class="card resume-card" [nzBordered]="false">
+                <div class="resume-row">
+                    <div class="resume-text">
+                        <div class="title">Devam Eden Egzersiziniz Var</div>
+                        <div class="desc">Son başlattığınız egzersize geri dönmek ister misiniz?</div>
+                    </div>
+                    <button nz-button nzType="primary" nzShape="circle" nzSize="large"
+                            class="resume-play-btn" (click)="resumeSession()" aria-label="Devam et">
+                        <span nz-icon nzType="caret-right"></span>
+                    </button>
+                </div>
+            </nz-card>
+        </div>
+
+        <!-- EQUIPMENT -->
+        <div class="wrap" *ngIf="sessionStatus === 'equipment'">
+            <nz-card class="card" [nzBordered]="false">
+                <div class="head">
+                    <div>
+                        <div class="title">Ekipman Kullanımı</div>
+                        <div class="desc">Yeni bir seans için ekipman kullanacak mısınız?</div>
+                    </div>
+                    <div class="pill">1/2</div>
+                </div>
+
+                <div class="options">
+                    <button
+                            nz-button
+                            class="tile"
+                            [ngClass]="{ active: selectedEquipment === 'withEquipment' }"
+                            (click)="setEquipment(true)"
+                            [disabled]="loading || selectedEquipment === 'withoutEquipment'"
+                            [nzLoading]="selectedEquipment === 'withEquipment'">
+
+                        <span nz-icon nzType="tool" class="ico"></span>
+
+                        <div class="tileText">
+                            <div class="tileTitle">Ekipmanlı</div>
+                            <div class="tileSub">Top / bant / dumbell gibi</div>
+                        </div>
+
+                        <span
+                                nz-icon
+                                nzType="check-circle"
+                                class="check"
+                                *ngIf="selectedEquipment === 'withEquipment'"></span>
+                    </button>
+
+                    <button
+                            nz-button
+                            class="tile"
+                            [ngClass]="{ active: selectedEquipment === 'withoutEquipment' }"
+                            (click)="setEquipment(false)"
+                            [disabled]="loading || selectedEquipment === 'withEquipment'"
+                            [nzLoading]="selectedEquipment === 'withoutEquipment'">
+
+                        <span nz-icon nzType="user" class="ico"></span>
+
+                        <div class="tileText">
+                            <div class="tileTitle">Ekipmansız</div>
+                            <div class="tileSub">Sadece vücut ağırlığı</div>
+                        </div>
+
+                        <span
+                                nz-icon
+                                nzType="check-circle"
+                                class="check"
+                                *ngIf="selectedEquipment === 'withoutEquipment'"></span>
+                    </button>
+                </div>
+
+                <div class="note">Seçiminizi bir sonraki adımda detaylandıracağız.</div>
+            </nz-card>
+        </div>
+
+        <!-- EQUIPMENT DETAIL -->
+        <div class="wrap" *ngIf="sessionStatus === 'equipmentDetail'">
+            <nz-card class="card" [nzBordered]="false">
+                <div class="head head-detail">
+                    <button nz-button nzType="default" nzShape="circle" class="back-btn" (click)="goBackToEquipment()">
+                        <span nz-icon nzType="arrow-left"></span>
+                    </button>
+
+                    <div class="headText">
+                        <div class="title">Ekipman Detayı</div>
+                        <div class="desc">Hangi ekipmanı kullanacaksınız?</div>
+                    </div>
+
+                    <div class="pill">2/2</div>
+                </div>
+
+                <div nz-row [nzGutter]="12" class="grid">
+                    <div nz-col [nzXs]="24" [nzSm]="12">
+                        <button
+                                nz-button
+                                class="tile"
+                                [ngClass]="{ active: selectedEquipmentDetail === '1' }"
+                                (click)="setEquipmentDetail('1')"
+                                [disabled]="loading || (selectedEquipmentDetail !== '' && selectedEquipmentDetail !== '1')"
+                                [nzLoading]="selectedEquipmentDetail === '1'">
+
+                            <span class="ico">
+                                <fa-icon [icon]="faIconList.faBaseballBall" class="titleIco"></fa-icon>
+                            </span>
+
+                            <div class="tileText">
+                                <div class="tileTitle">Egzersiz Topu</div>
+                            </div>
+
+                            <span nz-icon nzType="check-circle" class="check"
+                                  *ngIf="selectedEquipmentDetail === '1'"></span>
+                        </button>
+                    </div>
+
+                    <div nz-col [nzXs]="24" [nzSm]="12">
+                        <button
+                                nz-button
+                                class="tile"
+                                [ngClass]="{ active: selectedEquipmentDetail === '2' }"
+                                (click)="setEquipmentDetail('2')"
+                                [disabled]="loading || (selectedEquipmentDetail !== '' && selectedEquipmentDetail !== '2')"
+                                [nzLoading]="selectedEquipmentDetail === '2'">
+
+                            <span class="ico">
+                                <fa-icon [icon]="faIconList.faDumbbell" class="titleIco"></fa-icon>
+                            </span>
+
+                            <div class="tileText">
+                                <div class="tileTitle">Egzersiz Bandı/Dumbell</div>
+                            </div>
+
+                            <span nz-icon nzType="check-circle" class="check"
+                                  *ngIf="selectedEquipmentDetail === '2'"></span>
+                        </button>
+                    </div>
+
+                    <div nz-col [nzXs]="24" [nzSm]="24">
+                        <button
+                                nz-button
+                                class="tile"
+                                [ngClass]="{ active: selectedEquipmentDetail === '3' }"
+                                (click)="setEquipmentDetail('3')"
+                                [disabled]="loading || (selectedEquipmentDetail !== '' && selectedEquipmentDetail !== '3')"
+                                [nzLoading]="selectedEquipmentDetail === '3'">
+
+                            <span class="ico">
+                                <fa-icon [icon]="faIconList.faResistanceBand" class="titleIco"></fa-icon>
+                            </span>
+
+                            <div class="tileText">
+
+                                <div class="tileTitle">Egzersiz Bandı/Kum Torbası</div>
+                            </div>
+
+                            <span nz-icon nzType="check-circle" class="check"
+                                  *ngIf="selectedEquipmentDetail === '3'"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="note">Seçim yapınca otomatik devam edilecektir.</div>
+            </nz-card>
+        </div>
+    </nz-spin>
+</div>

@@ -1,0 +1,165 @@
+.contact-page{
+  min-height: 100%;
+  width: 100%;
+  padding: 18px 14px 22px;
+  background: linear-gradient(180deg, #f6f8fb, #eef3f7);
+}
+
+.section-head{
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.section-title{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #111;
+}
+
+.section-icon{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(79,70,229,0.10);
+  border: 1px solid rgba(0,0,0,0.06);
+  font-size: 20px;
+}
+
+.h1{
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.h2{
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.55);
+}
+
+.divider{
+  height: 14px;
+  border-radius: 999px;
+  margin: 12px 0 14px;
+  background: rgba(0,0,0,0.06);
+}
+
+/* Kart */
+.support-card{
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  border: 0;
+  outline: none;
+  text-align: left;
+
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+  padding: 14px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.support-card:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 42px rgba(0,0,0,0.10);
+}
+
+.support-card:active{
+  transform: scale(0.99);
+}
+
+.left{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.badge{
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(90deg, rgba(79,70,229,0.14), rgba(124,58,237,0.10));
+  border: 1px solid rgba(0,0,0,0.06);
+  flex: 0 0 auto;
+}
+
+.badge-icon{
+  font-size: 20px;
+}
+
+.text{
+  min-width: 0;
+}
+
+.kicker{
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(0,0,0,0.55);
+}
+
+.value{
+  margin-top: 3px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #111;
+
+  /* ✅ 2 satıra kadar sardır, sonra ... */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+  word-break: break-word;   /* uzun parçaları da kır */
+  line-height: 1.15;
+  max-width: 100%;
+}
+
+
+.sub{
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.45);
+}
+
+/* sağ ok */
+.right{
+  flex: 0 0 auto;
+}
+
+.arrow{
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+
+  background: rgba(0,0,0,0.04);
+  color: rgba(0,0,0,0.45);
+  font-size: 26px;
+  font-weight: 900;
+}
+
+/* ipucu */
+.hint{
+  max-width: 720px;
+  margin: 14px auto 0;
+  font-size: 13px;
+  color: rgba(0,0,0,0.60);
+  line-height: 1.4;
+}

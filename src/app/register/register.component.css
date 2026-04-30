@@ -1,0 +1,232 @@
+:host {
+  --brand: #1b9aa5;
+--border: rgba(0, 0, 0, 0.10);
+  --text2: rgba(0, 0, 0, 0.55);
+}
+
+.auth-screen {
+  min-height: 100vh;
+  padding: 18px 14px;
+  background:
+          radial-gradient(900px 360px at 50% -30%, rgba(27, 154, 165, 0.22), transparent 60%),
+          linear-gradient(180deg, #f6f8fb, #eef3f7);
+}
+
+.auth-wrap {
+  min-height: calc(100vh - 36px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: min(520px, 100%);
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  padding: 6px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 10px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.brandLogo {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+}
+
+.brandTitle {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+}
+
+.brandSub {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.form {
+  padding: 16px 10px 10px;
+}
+
+.item {
+  margin-bottom: 14px;
+}
+
+.pico {
+  color: var(--brand);
+  font-size: 16px;
+}
+
+.picker {
+  width: 100%;
+}
+
+::ng-deep .auth-card .ant-form-item-label > label {
+  font-weight: 800;
+}
+
+::ng-deep .auth-card .ant-input-affix-wrapper-lg {
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 0 14px;
+}
+
+::ng-deep .auth-card .ant-input {
+  font-weight: 700;
+}
+
+::ng-deep .auth-card .ant-input::placeholder {
+  color: rgba(0, 0, 0, 0.28);
+}
+
+
+::ng-deep .auth-card .ant-picker {
+  width: 100%;
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 6px;
+}
+
+::ng-deep .auth-card .ant-input-affix-wrapper-focused {
+  border-color: rgba(27, 154, 165, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(27, 154, 165, 0.15) !important;
+}
+
+.submit {
+  width: 100%;
+  height: 54px;
+  border-radius: 16px;
+  font-weight: 900;
+  background: var(--brand);
+  border-color: var(--brand);
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+::ng-deep .submit span {
+  color: #fff !important;
+}
+
+.btnIco {
+  color: #fff;
+  font-size: 15px;
+}
+
+.footnote {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.modalText {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.warn { font-size: 14px; color: rgba(0,0,0,0.78); }
+.warnIntro { margin-bottom: 10px; }
+.warnTitle { font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+.warnSub { color: rgba(0,0,0,0.60); }
+
+.warnList { padding-left: 18px; margin: 10px 0 14px; }
+.warnList li { margin: 6px 0; }
+
+.equipBlock {
+  background: rgba(14,165,233,0.06);
+  border: 1px solid rgba(14,165,233,0.16);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0 12px;
+}
+.equipTitle { font-weight: 900; margin-bottom: 6px; }
+.equipText { color: rgba(0,0,0,0.62); margin-bottom: 10px; }
+
+.equipChips { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+.chip {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.equipAlt ul { margin: 6px 0 0; padding-left: 18px; }
+.equipAlt li { margin: 4px 0; }
+
+.warnDanger {
+  background: rgba(239,68,68,0.10);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #b91c1c;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 900;
+  text-align: center;
+  margin: 10px 0 8px;
+}
+
+.warnContact {
+  text-align: center;
+  color: rgba(0,0,0,0.55);
+  font-size: 12px;
+}
+
+.equipGallery img{
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  margin: 10px auto 6px;
+  border-radius: 12px;
+}
+
+.altGallery{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.altCard{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.altTitle{
+  font-weight: 900;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.altCard img{
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.altCaption{
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(0,0,0,0.55);
+  text-align: center;
+}
+
+@media (max-width: 520px){
+  .altGallery{ grid-template-columns: 1fr; }
+}

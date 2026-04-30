@@ -1,0 +1,169 @@
+<div class="auth-screen">
+    <div class="auth-wrap">
+        <nz-card class="auth-card" [nzBordered]="false">
+            <!-- BRAND -->
+            <div class="brand">
+                <img class="brandLogo" src="silent-step-icon.png" alt="iDEA"/>
+                <div class="brandText">
+                    <div class="brandTitle">iDEA</div>
+                    <div class="brandSub">Kayıt bilgilerinizi girerek devam edin</div>
+                </div>
+            </div>
+
+            <form nz-form nzLayout="vertical" [formGroup]="validateForm" (ngSubmit)="register()" class="form">
+                <!-- Okul No -->
+                <nz-form-item class="item">
+                    <nz-form-label>Okul Numarası</nz-form-label>
+                    <nz-form-control nzErrorTip="Lütfen okul numaranızı giriniz.">
+                        <nz-input-group nzSize="large" class="field" [nzPrefix]="pSchool">
+                            <input
+                                    nz-input
+                                    formControlName="schoolNumber"
+                                    type="number"
+                                    placeholder="Örn: 20231234"/>
+                        </nz-input-group>
+                        <ng-template #pSchool>
+                            <fa-icon [icon]="faIconList.faHashtag" class="pico"></fa-icon>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <!-- Ad Soyad -->
+                <nz-form-item class="item">
+                    <nz-form-label>Ad Soyad</nz-form-label>
+                    <nz-form-control nzErrorTip="Lütfen ad soyad bilginizi giriniz.">
+                        <nz-input-group nzSize="large" class="field" [nzPrefix]="pUser">
+                            <input nz-input formControlName="name" type="text" placeholder="Örn: Neslihan Köse"/>
+                        </nz-input-group>
+                        <ng-template #pUser>
+                            <fa-icon [icon]="faIconList.faUser" class="pico"></fa-icon>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <!-- Yaş -->
+                <nz-form-item class="item">
+                    <nz-form-label>Yaş</nz-form-label>
+                    <nz-form-control [nzErrorTip]="ageErrorTpl">
+                        <nz-input-group nzSize="large" class="field" [nzPrefix]="pAge">
+                            <input
+                                    nz-input
+                                    formControlName="age"
+                                    type="number"
+                                    min="6"
+                                    max="18"
+                                    step="1"
+                                    placeholder="6 - 18" />
+                        </nz-input-group>
+
+                        <ng-template #pAge>
+                            <fa-icon [icon]="faIconList.faHashtag" class="pico"></fa-icon>
+                        </ng-template>
+
+                        <ng-template #ageErrorTpl>
+                            <ng-container *ngIf="validateForm.get('age')?.hasError('required')">
+                                Lütfen yaş bilginizi giriniz.
+                            </ng-container>
+                            <ng-container *ngIf="validateForm.get('age')?.hasError('min') || validateForm.get('age')?.hasError('max')">
+                                Yaş 6 ile 18 arasında olmalıdır.
+                            </ng-container>
+                            <ng-container *ngIf="validateForm.get('age')?.hasError('pattern')">
+                                Lütfen geçerli bir tam sayı giriniz.
+                            </ng-container>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <!-- Submit -->
+                <button
+                        nz-button
+                        nzType="primary"
+                        nzSize="large"
+                        class="submit"
+                        [disabled]="!validateForm.valid">
+                    Devam Et
+                    <fa-icon [icon]="faIconList.faArrowRight" class="btnIco"></fa-icon>
+                </button>
+
+                <div class="footnote">
+                    Devam ederek bilgilerin doğruluğunu onaylamış olursunuz.
+                </div>
+            </form>
+        </nz-card>
+    </div>
+</div>
+
+<nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="Egzersiz Öncesi Bilgilendirme"
+        (nzOnOk)="handleOk()"
+        (nzOnCancel)="handleCancel()"
+        [nzOkText]="'Anladım'"
+        [nzCancelText]="'Vazgeç'"
+        [nzWidth]="560"
+        [nzBodyStyle]="{ 'max-height': '70vh', 'overflow': 'auto' }">
+    <ng-container *nzModalContent>
+        <div class="warn">
+            <div class="warnIntro">
+                <div class="warnTitle">Sevgili çocuklar ve ebeveynler,</div>
+                <div class="warnSub">
+                    Egzersizlere başlamadan önce sağlıklı ve güvenli bir deneyim için lütfen aşağıdaki noktalara dikkat
+                    edelim:
+                </div>
+            </div>
+
+            <ul class="warnList">
+                <li>Hareket etmeye uygun rahat kıyafetler tercih edin.</li>
+                <li>Kendinizi yorgun, hasta ya da rahatsız hissederseniz egzersizi bırakın.</li>
+                <li>Egzersizleri yaparken nefes tutmayın; nefes alışverişini kontrol edin.</li>
+                <li>
+                    Tok karnına zor olabilir; aç karnına da halsiz hissettirebilir.
+                    Egzersizden yaklaşık 1 saat önce hafif bir şeyler yiyebilirsiniz.
+                </li>
+                <li>Bu egzersizler eğlenceli ve sağlıklı kalmanız için hazırlandı; lütfen kendinizi zorlamayın.</li>
+            </ul>
+
+            <div class="equipBlock">
+                <div class="equipTitle">Ekipman Bilgisi</div>
+                <div class="equipText">
+                    İlk aşamada ekipmanlı veya ekipmansız egzersiz tercihinde bulunabilirsiniz.
+                    Ekipmanlı egzersizlerde aşağıdaki ekipmanlara ihtiyaç duyulabilir:
+                </div>
+
+                <div class="equipChips">
+                    <span class="chip">Egzersiz Topu</span>
+                    <span class="chip">Egzersiz Bandı</span>
+                    <span class="chip">Dumbell</span>
+                </div>
+
+                <div class="equipGallery">
+                    <img src="Picture2.png" alt="Kullanılabilecek ekipmanlar" />
+                </div>
+
+                <div class="equipAlt">
+                    Evde ekipman yoksa:
+                    <ul>
+                        <li><b>Egzersiz bandı</b> yerine esneyen uzun bir çorap / esneyen tayt kullanabilirsiniz.</li>
+                        <li><b>Dumbell</b> yerine içi doldurulmuş su şişeleri kullanabilirsiniz.</li>
+                    </ul>
+                </div>
+
+                <div class="altGallery">
+                    <div class="altCard">
+                        <img src="Picture1.png" alt="Şişe alternatifi" />
+                        <div class="altCaption">İçi doldurulmuş şişeler</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warnDanger">
+                <b>YÜKSEK AĞIRLIKLAR KULLANMAYINIZ.</b>
+            </div>
+
+            <div class="warnContact">
+                Her türlü soru için bize ulaşabilirsiniz.
+            </div>
+        </div>
+    </ng-container>
+</nz-modal>
+

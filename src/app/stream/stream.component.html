@@ -1,0 +1,125 @@
+<div class="screen">
+    <div class="topbar">
+
+        <button nz-button nzType="default" nzShape="circle" class="stream-back-btn" (click)="onBack()">
+            <span nz-icon nzType="arrow-left"></span>
+        </button>
+
+        <div class="pill">
+            {{ getCategory(sources[index].video?.category ?? '') }}
+        </div>
+
+        <div class="topbar-right">
+            <div class="chip">
+                Playlist: {{ index + 1 }} / {{ playlist?.length || 0 }}
+            </div>
+
+            <div class="progress">
+                <div class="progress-fill"
+                     [style.width.%]="((index + 1) / (playlist?.length || 1)) * 100"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="media-shell">
+            <div class="video-card">
+                <div class="video-fit">
+                    <video
+                        #videoPlayer
+                        id="my-video"
+                        class="video-js"
+                        controls
+                        preload="metadata"
+                        playsinline
+                    ></video>
+                </div>
+
+            </div>
+
+            <div class="playlist-card">
+                <div class="playlist-head">
+                    <span>Sonraki Videolar</span>
+                    <span class="sub">Tıklama kapalı</span>
+                </div>
+
+                <div class="playlist-container">
+                    <ul class="playlist-row playlist-disabled">
+                        <li *ngFor="let video of playlist; let i = index"
+                            class="playlist-thumb"
+                            [class.active]="i === index">
+                            <img [src]="video.poster" alt="Poster" draggable="false" />
+                            <span>{{ video.title }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- alt boşluk hissini azaltan bir “footer info” -->
+            <div class="bottom-hint">
+                İpucu: Videoyu ileri/geri sarmak kapalıdır. Lütfen sırayla tamamlayın.
+            </div>
+        </div>
+    </div>
+
+    <nz-modal
+            [(nzVisible)]="isVisible"
+            nzTitle="🎉 Tebrikler! Etkinliği Tamamladınız."
+            [nzCentered]="true"
+            [nzFooter]="null"
+            [nzClosable]="false"
+            [nzMaskClosable]="false"
+            class="custom-modal"
+    >
+        <ng-container *nzModalContent>
+            <div class="modal-content modal-card">
+                <div class="modal-badge">🎉</div>
+
+                <h3 class="modal-title">Bu çalışmaların zorluğu sizce nasıldı?</h3>
+                <div class="modal-sub">Bir seçim yaparak seansı tamamlayın.</div>
+
+                <nz-radio-group [(ngModel)]="difficultySelection" class="difficulty-group">
+                    <label nz-radio nzValue="1" class="difficulty-option easy1">🟢 Çok Kolay</label>
+                    <label nz-radio nzValue="2" class="difficulty-option easy2">🟡 Kolay</label>
+                    <label nz-radio nzValue="3" class="difficulty-option normal">🔵 Normal</label>
+                    <label nz-radio nzValue="4" class="difficulty-option hard1">🟠 Zor</label>
+                    <label nz-radio nzValue="5" class="difficulty-option hard2">🔴 Çok Zor</label>
+                </nz-radio-group>
+
+                <button nz-button nzType="primary" class="confirm-button" (click)="handleOk()">
+                    Seçimi Kaydet
+                </button>
+            </div>
+        </ng-container>
+    </nz-modal>
+
+    <nz-modal
+            [(nzVisible)]="isFinishVisible"
+            nzTitle="✅ Egzersiz Tamamlandı"
+            [nzCentered]="true"
+            [nzFooter]="null"
+            [nzClosable]="false"
+            [nzMaskClosable]="false"
+            class="custom-modal"
+    >
+        <ng-container *nzModalContent>
+            <div class="modal-content modal-card">
+                <div class="modal-badge">✅</div>
+
+                <h3 class="modal-title">Egzersizi tamamladınız.</h3>
+                <div class="modal-sub">Yeni bir egzersiz yapmak ister misiniz?</div>
+
+                <div class="finish-actions">
+                    <button nz-button nzType="primary" class="confirm-button" (click)="startNewExercise()">
+                        🔄 Yeni Egzersiz
+                    </button>
+
+                    <button nz-button nzType="default" class="ghost-button" (click)="closeFinishModal()">
+                        ❌ Hayır
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+    </nz-modal>
+
+</div>

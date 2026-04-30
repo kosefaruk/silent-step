@@ -1,0 +1,33 @@
+/**
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
+ */
+/**
+ * Calculate position and scale
+ *
+ * @param containerEle
+ * @param targetEle
+ * @param scale: if scale is set, skip calculate scale value
+ */
+export const calculateTransform = (containerEle, targetEle, scale) => {
+    const containerEleSize = containerEle.getBoundingClientRect();
+    const targetEleSize = targetEle.getBBox();
+    if (!targetEleSize.width) {
+        // There is no g element anymore.
+        return null;
+    }
+    // TODO
+    // leave some place when re-scale
+    const scaleUnit = (containerEleSize.width - 48) / containerEleSize.width;
+    const k = scale ||
+        Math.min(containerEleSize.width / targetEleSize.width, containerEleSize.height / targetEleSize.height, 1) *
+            scaleUnit;
+    const x = (containerEleSize.width - targetEleSize.width * k) / 2;
+    const y = (containerEleSize.height - targetEleSize.height * k) / 2;
+    return {
+        x,
+        y,
+        k
+    };
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXRpbHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9jb21wb25lbnRzL2dyYXBoL2NvcmUvdXRpbHMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7OztHQUdHO0FBSUg7Ozs7OztHQU1HO0FBQ0gsTUFBTSxDQUFDLE1BQU0sa0JBQWtCLEdBQUcsQ0FDaEMsWUFBMkIsRUFDM0IsU0FBc0IsRUFDdEIsS0FBYyxFQUNVLEVBQUU7SUFDMUIsTUFBTSxnQkFBZ0IsR0FBRyxZQUFZLENBQUMscUJBQXFCLEVBQUUsQ0FBQztJQUM5RCxNQUFNLGFBQWEsR0FBRyxTQUFTLENBQUMsT0FBTyxFQUFFLENBQUM7SUFDMUMsSUFBSSxDQUFDLGFBQWEsQ0FBQyxLQUFLLEVBQUUsQ0FBQztRQUN6QixpQ0FBaUM7UUFDakMsT0FBTyxJQUFJLENBQUM7SUFDZCxDQUFDO0lBRUQsT0FBTztJQUNQLGlDQUFpQztJQUNqQyxNQUFNLFNBQVMsR0FBRyxDQUFDLGdCQUFnQixDQUFDLEtBQUssR0FBRyxFQUFFLENBQUMsR0FBRyxnQkFBZ0IsQ0FBQyxLQUFLLENBQUM7SUFDekUsTUFBTSxDQUFDLEdBQ0wsS0FBSztRQUNMLElBQUksQ0FBQyxHQUFHLENBQUMsZ0JBQWdCLENBQUMsS0FBSyxHQUFHLGFBQWEsQ0FBQyxLQUFLLEVBQUUsZ0JBQWdCLENBQUMsTUFBTSxHQUFHLGFBQWEsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxDQUFDO1lBQ3ZHLFNBQVMsQ0FBQztJQUNkLE1BQU0sQ0FBQyxHQUFHLENBQUMsZ0JBQWdCLENBQUMsS0FBSyxHQUFHLGFBQWEsQ0FBQyxLQUFLLEdBQUcsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxDQUFDO0lBQ2pFLE1BQU0sQ0FBQyxHQUFHLENBQUMsZ0JBQWdCLENBQUMsTUFBTSxHQUFHLGFBQWEsQ0FBQyxNQUFNLEdBQUcsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxDQUFDO0lBQ25FLE9BQU87UUFDTCxDQUFDO1FBQ0QsQ0FBQztRQUNELENBQUM7S0FDRixDQUFDO0FBQ0osQ0FBQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2dpdGh1Yi5jb20vTkctWk9SUk8vbmctem9ycm8tYW50ZC9ibG9iL21hc3Rlci9MSUNFTlNFXG4gKi9cblxuaW1wb3J0IHsgTnpab29tVHJhbnNmb3JtIH0gZnJvbSAnLi4vaW50ZXJmYWNlJztcblxuLyoqXG4gKiBDYWxjdWxhdGUgcG9zaXRpb24gYW5kIHNjYWxlXG4gKlxuICogQHBhcmFtIGNvbnRhaW5lckVsZVxuICogQHBhcmFtIHRhcmdldEVsZVxuICogQHBhcmFtIHNjYWxlOiBpZiBzY2FsZSBpcyBzZXQsIHNraXAgY2FsY3VsYXRlIHNjYWxlIHZhbHVlXG4gKi9cbmV4cG9ydCBjb25zdCBjYWxjdWxhdGVUcmFuc2Zvcm0gPSAoXG4gIGNvbnRhaW5lckVsZTogU1ZHU1ZHRWxlbWVudCxcbiAgdGFyZ2V0RWxlOiBTVkdHRWxlbWVudCxcbiAgc2NhbGU/OiBudW1iZXJcbik6IE56Wm9vbVRyYW5zZm9ybSB8IG51bGwgPT4ge1xuICBjb25zdCBjb250YWluZXJFbGVTaXplID0gY29udGFpbmVyRWxlLmdldEJvdW5kaW5nQ2xpZW50UmVjdCgpO1xuICBjb25zdCB0YXJnZXRFbGVTaXplID0gdGFyZ2V0RWxlLmdldEJCb3goKTtcbiAgaWYgKCF0YXJnZXRFbGVTaXplLndpZHRoKSB7XG4gICAgLy8gVGhlcmUgaXMgbm8gZyBlbGVtZW50IGFueW1vcmUuXG4gICAgcmV0dXJuIG51bGw7XG4gIH1cblxuICAvLyBUT0RPXG4gIC8vIGxlYXZlIHNvbWUgcGxhY2Ugd2hlbiByZS1zY2FsZVxuICBjb25zdCBzY2FsZVVuaXQgPSAoY29udGFpbmVyRWxlU2l6ZS53aWR0aCAtIDQ4KSAvIGNvbnRhaW5lckVsZVNpemUud2lkdGg7XG4gIGNvbnN0IGsgPVxuICAgIHNjYWxlIHx8XG4gICAgTWF0aC5taW4oY29udGFpbmVyRWxlU2l6ZS53aWR0aCAvIHRhcmdldEVsZVNpemUud2lkdGgsIGNvbnRhaW5lckVsZVNpemUuaGVpZ2h0IC8gdGFyZ2V0RWxlU2l6ZS5oZWlnaHQsIDEpICpcbiAgICAgIHNjYWxlVW5pdDtcbiAgY29uc3QgeCA9IChjb250YWluZXJFbGVTaXplLndpZHRoIC0gdGFyZ2V0RWxlU2l6ZS53aWR0aCAqIGspIC8gMjtcbiAgY29uc3QgeSA9IChjb250YWluZXJFbGVTaXplLmhlaWdodCAtIHRhcmdldEVsZVNpemUuaGVpZ2h0ICogaykgLyAyO1xuICByZXR1cm4ge1xuICAgIHgsXG4gICAgeSxcbiAgICBrXG4gIH07XG59O1xuIl19
