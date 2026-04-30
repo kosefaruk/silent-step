@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Angular build output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+.angular/cache
+.angular/
+
+# IDE / editor
+/.idea
+/.vscode
+/.claude
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+serviceAccount.json
+
+# Logs
+*.log
+logs/
+
+# Testing
+/coverage
+/.nyc_output
+
+# Misc
+*.tsbuildinfo
+*.swp
+*.swo
+
+# iOS (root-level extras; native folders have their own .gitignore)
+ios/App/Pods/
+ios/DerivedData/
+
+# Android (root-level extras; native folders have their own .gitignore)
+android/.gradle/
+android/local.properties
+android/captures/
+android/app/release/
+android/app/debug/
+
+# Capacitor
+.capacitor/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
